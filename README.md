@@ -10,6 +10,7 @@ Assuming the `$GOPATH/bin` is in your `$PATH`, run:
 `# servehere`
 
 Optional parameters are:
+
 | Flag | Description | Default |
 |---|---|---|
 | -p | port to listen on | 8000 |
