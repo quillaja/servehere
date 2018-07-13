@@ -9,14 +9,22 @@ import (
 )
 
 func main() {
+	bindAddress := flag.String("a", "localhost", "The bind address. Use '0.0.0.0' for all interfaces.")
 	port := flag.String("p", "8000", "The port to serve on.")
+	verbose := flag.Bool("v", true, "Output messages to stderr.")
 	flag.Parse()
 
-	log.Printf("Starting HTTP fileserver on port %s.\n", *port)
-	log.Println("Press CTRL-C to stop serving.\n")
+	if *verbose {
+		log.Printf("Starting HTTP fileserver on %s:%s.\n", *bindAddress, *port)
+		log.Printf("Press CTRL-C to stop serving.\n\n")
+	}
 
-	handler := loggingHandler(http.FileServer(http.Dir(".")))
-	log.Fatalln(http.ListenAndServe(":"+*port, handler))
+	handler := http.FileServer(http.Dir("."))
+	if *verbose {
+		handler = loggingHandler(handler)
+	}
+
+	log.Fatalln(http.ListenAndServe(*bindAddress+":"+*port, handler))
 }
 
 // loggingHander wraps an http.Handler and prints request/response info.
