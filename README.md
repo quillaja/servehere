@@ -7,10 +7,12 @@ It's can be used similarly to python 2's `SimpleHTTPServer` or python 3's `http.
 
 ## Run
 Assuming the `$GOPATH/bin` is in your `$PATH`, run:
-`# servehere`
+`$ servehere`
 
 Optional parameters are:
 
 | Flag | Description | Default |
 |---|---|---|
-| -p | port to listen on | 8000 |
+| p | port to listen on | 8000 |
+| a | bind address | localhost |
+| v | verbose output | true |
