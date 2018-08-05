@@ -4,7 +4,6 @@ It's can be used similarly to python 2's `SimpleHTTPServer` or python 3's `http.
 
 ## Install
     go get github.com/quillaja/servehere
-    go install github.com/quillaja/servehere
 
 ## Run
 Assuming the `$GOPATH/bin` is in your `$PATH`, run:
